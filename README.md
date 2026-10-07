@@ -68,7 +68,7 @@ Always run the scripts from the project root folder.
 
 ### 1. Prepare enrollment photos
 
-Put 4 clear photos of each person in their own folder:
+Create the folders yourself (they are not in the repo) and put 4 clear photos of each person in their own folder:
 
 ```
 data/enroll/alice/1.jpg ... 4.jpg
@@ -76,7 +76,7 @@ data/enroll/bob/1.jpg   ... 4.jpg
 data/enroll/carol/1.jpg ... 4.jpg
 ```
 
-Use real photos of the person (not photos of a screen). Use one large, frontal or slightly turned face per photo. Avoid heavy side profiles.
+Use real photos of the person (not photos of a screen), with one large, frontal or slightly turned face per photo.
 
 ### 2. Enroll
 
@@ -110,13 +110,11 @@ The output table shows `live`, `live_score`, `identity` and `sim` for every dete
 python demo_webcam.py 1
 ```
 
-The argument is the camera index. If the window is black, try another index. Virtual cameras such as Iriun or OBS often take index 0.
+The argument is the camera index. If the window is black, try another index (virtual cameras such as Iriun or OBS often take index 0).
 
 Keys: `q` quit, `s` save a screenshot to `outputs/`.
 
-Box colours:
-
-| Colour | Meaning |
+| Box colour | Meaning |
 |---|---|
 | Green | Live and recognized |
 | Yellow | Live but unknown |
@@ -148,17 +146,6 @@ For each attack, record the condition, `live_score` and result (screenshot with 
 | Appearance | glasses, makeup, face mask, skin tone |
 
 A spoof marked live is a false accept (counts toward APCER). A real face marked spoof is a false reject (counts toward BPCER).
-
-## Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| `ModuleNotFoundError: src` or `config` | Run from the project root |
-| Black webcam window | Try another camera index; add `cv2.CAP_DSHOW` on Windows |
-| `[skip] no face in X.jpg` | Use a larger, clearer, more frontal photo |
-| Import error in `antispoof.py` | Check class names in `src/minifasnet_arch.py` |
-| `insightface` install fails (Windows) | Install Microsoft C++ Build Tools, then retry |
-| `FutureWarning: tform.estimate` | Harmless |
 
 ## Privacy
 
