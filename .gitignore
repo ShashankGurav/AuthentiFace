@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pth
+db/embeddings.json
+data/
+outputs/*
+!outputs/.gitkeep
