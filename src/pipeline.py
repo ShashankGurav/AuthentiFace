@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from src.face_engine import FaceEngine
-from src.antispoof import AntiSpoof
+from src.antispoof import load_antispoof
 from src.matcher import Matcher
 from src.database import load_gallery
 
@@ -15,9 +15,9 @@ class FaceResult:
 
 
 class Pipeline:
-    def __init__(self, use_gpu: bool = False):
+    def __init__(self, use_gpu: bool = False, spoof_model: str | None = None):
         self.engine = FaceEngine(use_gpu)
-        self.spoof = AntiSpoof("cuda" if use_gpu else "cpu")
+        self.spoof = load_antispoof(spoof_model, "cuda" if use_gpu else "cpu")
         self.matcher = Matcher(*load_gallery())
 
     def process(self, img_bgr) -> list[FaceResult]:

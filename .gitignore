@@ -1,6 +1,7 @@
 venv/
 __pycache__/
 *.pth
+*.onnx
 db/embeddings.json
 data/
 outputs/*
